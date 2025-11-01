@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_hexapay_dashboard_user,access.hexapay.dashboard.user,model_hexapay_dashboard,base.group_user,1,0,0,0
+access_hexapay_dashboard_manager,access.hexapay.dashboard.manager,model_hexapay_dashboard,hexapay_core.group_hexapay_core_manager,1,1,1,1

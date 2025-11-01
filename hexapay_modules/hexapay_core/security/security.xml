@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- Security Groups -->
+        <record id="group_hexapay_core_user" model="res.groups">
+            <field name="name">HexaPay Core User</field>
+        </record>
+
+        <record id="group_hexapay_core_manager" model="res.groups">
+            <field name="name">HexaPay Core Manager</field>
+            <field name="implied_ids" eval="[(4, ref('group_hexapay_core_user'))]"/>
+        </record>
+    </data>
+</odoo>

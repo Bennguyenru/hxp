@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Main Menu -->
+    <menuitem id="menu_hexapay_root"
+              name="HexaPay CRM"
+              sequence="10"
+              web_icon="hexapay_player,static/description/icon.png"/>
+    
+    <!-- Players Menu -->
+    <menuitem id="menu_hexapay_players"
+              name="Players"
+              parent="menu_hexapay_root"
+              sequence="10"/>
+    
+    <menuitem id="menu_hexapay_player_list"
+              name="All Players"
+              parent="menu_hexapay_players"
+              action="action_hexapay_player"
+              sequence="10"/>
+    
+    <menuitem id="menu_hexapay_game_sessions"
+              name="Game Sessions"
+              parent="menu_hexapay_players"
+              action="hexapay_player.action_game_session"
+              sequence="20"/>
+    
+    <!-- VIP Menu -->
+    <menuitem id="menu_hexapay_vip"
+              name="VIP Management"
+              parent="menu_hexapay_root"
+              sequence="20"/>
+    
+    <menuitem id="menu_hexapay_vip_levels"
+              name="VIP Levels"
+              parent="menu_hexapay_vip"
+              action="hexapay_vip.action_vip_level"
+              sequence="10"/>
+    
+    <!-- Transactions Menu -->
+    <menuitem id="menu_hexapay_transactions"
+              name="Transactions"
+              parent="menu_hexapay_root"
+              sequence="30"/>
+    
+    <menuitem id="menu_hexapay_transaction_list"
+              name="All Transactions"
+              parent="menu_hexapay_transactions"
+              action="hexapay_transaction.action_transaction"
+              sequence="10"/>
+    
+    <!-- Bonus Menu -->
+    <menuitem id="menu_hexapay_bonus"
+              name="Bonuses"
+              parent="menu_hexapay_root"
+              sequence="40"/>
+    
+    <menuitem id="menu_hexapay_bonus_campaigns"
+              name="Campaigns"
+              parent="menu_hexapay_bonus"
+              action="hexapay_bonus.action_bonus_campaign"
+              sequence="10"/>
+    
+    <menuitem id="menu_hexapay_player_bonuses"
+              name="Player Bonuses"
+              parent="menu_hexapay_bonus"
+              action="hexapay_bonus.action_player_bonus"
+              sequence="20"/>
+    
+    <!-- Risk Menu -->
+    <menuitem id="menu_hexapay_risk"
+              name="Risk &amp; Compliance"
+              parent="menu_hexapay_root"
+              sequence="50"/>
+    
+    <menuitem id="menu_hexapay_risk_alerts"
+              name="Alerts"
+              parent="menu_hexapay_risk"
+              action="hexapay_risk.action_risk_alert"
+              sequence="10"/>
+    
+    <menuitem id="menu_hexapay_risk_rules"
+              name="Rules"
+              parent="menu_hexapay_risk"
+              action="hexapay_risk.action_risk_rule"
+              sequence="20"/>
+    
+    <!-- Support Menu -->
+    <menuitem id="menu_hexapay_support"
+              name="Support"
+              parent="menu_hexapay_root"
+              sequence="60"/>
+    
+    <menuitem id="menu_hexapay_support_tickets"
+              name="Tickets"
+              parent="menu_hexapay_support"
+              action="hexapay_support.action_support_ticket"
+              sequence="10"/>
+    
+    <!-- Marketing Menu -->
+    <menuitem id="menu_hexapay_marketing"
+              name="Marketing"
+              parent="menu_hexapay_root"
+              sequence="70"/>
+    
+    <menuitem id="menu_hexapay_player_journeys"
+              name="Player Journeys"
+              parent="menu_hexapay_marketing"
+              action="hexapay_marketing.action_player_journey"
+              sequence="10"/>
+    
+    <menuitem id="menu_hexapay_ab_tests"
+              name="A/B Tests"
+              parent="menu_hexapay_marketing"
+              action="hexapay_marketing.action_ab_test"
+              sequence="20"/>
+    
+    <!-- Analytics Menu -->
+    <menuitem id="menu_hexapay_analytics"
+              name="Analytics"
+              parent="menu_hexapay_root"
+              sequence="80"/>
+    
+    <menuitem id="menu_hexapay_dashboards"
+              name="Dashboards"
+              parent="menu_hexapay_analytics"
+              action="hexapay_analytics.action_kpi_dashboard"
+              sequence="10"/>
+    
+    <!-- Integration Menu -->
+    <menuitem id="menu_hexapay_integration"
+              name="Integrations"
+              parent="menu_hexapay_root"
+              sequence="90"/>
+    
+    <menuitem id="menu_hexapay_connectors"
+              name="Connectors"
+              parent="menu_hexapay_integration"
+              action="hexapay_integration.action_integration_connector"
+              sequence="10"/>
+    
+    <menuitem id="menu_hexapay_integration_logs"
+              name="Logs"
+              parent="menu_hexapay_integration"
+              action="hexapay_integration.action_integration_log"
+              sequence="20"/>
+    
+    <!-- Configuration Menu -->
+    <menuitem id="menu_hexapay_config"
+              name="Configuration"
+              parent="menu_hexapay_root"
+              sequence="100"/>
+</odoo>

@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Player Form View - 360° Contact View -->
+        <record id="view_hexapay_player_form" model="ir.ui.view">
+            <field name="name">hexapay.player.form</field>
+            <field name="model">res.partner</field>
+            <field name="arch" type="xml">
+                <form string="Player 360° View">
+                    <header>
+                        <button name="action_verify_kyc" string="Verify KYC" type="object" 
+                                class="oe_highlight" attrs="{'invisible': [('kyc_status', '=', 'verified')]}"/>
+                        <button name="action_set_limits" string="Set Limits" type="object"/>
+                        <button name="action_suspend_account" string="Suspend" type="object" 
+                                confirm="Are you sure you want to suspend this account?"
+                                attrs="{'invisible': [('player_status', '=', 'suspended')]}"/>
+                        <button name="action_reactivate_account" string="Reactivate" type="object" 
+                                class="oe_highlight"
+                                attrs="{'invisible': [('player_status', '!=', 'suspended')]}"/>
+                        <field name="player_status" widget="statusbar" 
+                               statusbar_visible="lead,registered,active,inactive"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <button name="action_view_transactions" type="object" class="oe_stat_button" icon="fa-money">
+                                <field name="transaction_count" widget="statbutton" string="Transactions"/>
+                            </button>
+                            <button name="action_view_sessions" type="object" class="oe_stat_button" icon="fa-gamepad">
+                                <field name="session_count" widget="statbutton" string="Sessions"/>
+                            </button>
+                            <button name="%(crm.crm_lead_opportunities)d" type="action" class="oe_stat_button" icon="fa-star">
+                                <div class="o_field_widget o_stat_info">
+                                    <span class="o_stat_value">
+                                        <field name="opportunity_count"/>
+                                    </span>
+                                    <span class="o_stat_text">Deals</span>
+                                </div>
+                            </button>
+                            <button name="action_view_bonuses" type="object" class="oe_stat_button" icon="fa-gift">
+                                <field name="bonus_count" widget="statbutton" string="Bonuses"/>
+                            </button>
+                            <button name="action_view_tickets" type="object" class="oe_stat_button" icon="fa-ticket">
+                                <field name="ticket_count" widget="statbutton" string="Tickets"/>
+                            </button>
+                            <button name="action_view_alerts" type="object" class="oe_stat_button" icon="fa-exclamation-triangle"
+                                    attrs="{'invisible': [('alert_count', '=', 0)]}">
+                                <field name="alert_count" widget="statbutton" string="Alerts"/>
+                            </button>
+                        </div>
+                        
+                        <widget name="web_ribbon" title="VIP" bg_color="bg-danger" 
+                                attrs="{'invisible': [('vip_level_id', '=', False)]}"/>
+                        <widget name="web_ribbon" title="Suspended" bg_color="bg-warning" 
+                                attrs="{'invisible': [('player_status', '!=', 'suspended')]}"/>
+                        
+                        <field name="image_1920" widget="image" class="oe_avatar"/>
+                        
+                        <div class="oe_title">
+                            <h1>
+                                <field name="name" placeholder="Player Name" required="1"/>
+                            </h1>
+                            <h3>
+                                <field name="username" placeholder="Username"/>
+                            </h3>
+                        </div>
+                        
+                        <group>
+                            <group string="Basic Information">
+                                <field name="is_player" invisible="1"/>
+                                <field name="player_id" readonly="1"/>
+                                <field name="email" widget="email"/>
+                                <field name="phone" widget="phone"/>
+                                <field name="mobile" widget="phone"/>
+                                <field name="registration_date" readonly="1"/>
+                                <field name="first_deposit_date" readonly="1"/>
+                                <field name="last_login_date" readonly="1"/>
+                                <field name="last_activity_date" readonly="1"/>
+                            </group>
+                            
+                            <group string="VIP &amp; Segmentation">
+                                <field name="vip_level_id" options="{'no_create': True}"/>
+                                <field name="assigned_vip_manager_id" options="{'no_create': True}"/>
+                                <field name="player_segment" readonly="1"/>
+                                <field name="lead_score" widget="progressbar" readonly="1"/>
+                                <field name="aml_risk_level"/>
+                                <field name="pep_status"/>
+                            </group>
+                        </group>
+                        
+                        <notebook>
+                            <page string="Financial Overview" name="financial">
+                                <group>
+                                    <group string="Deposits &amp; Withdrawals">
+                                        <field name="currency_id" invisible="1"/>
+                                        <field name="total_deposits" widget="monetary"/>
+                                        <field name="total_withdrawals" widget="monetary"/>
+                                        <field name="net_deposits" widget="monetary"/>
+                                        <field name="avg_deposit_amount" widget="monetary"/>
+                                    </group>
+                                    <group string="Gaming Activity">
+                                        <field name="total_bets" widget="monetary"/>
+                                        <field name="total_wins" widget="monetary"/>
+                                        <field name="ggr" widget="monetary"/>
+                                        <field name="ltv" widget="monetary"/>
+                                        <field name="avg_bet_size" widget="monetary"/>
+                                    </group>
+                                </group>
+                                <group>
+                                    <group string="Behavioral Metrics">
+                                        <field name="total_sessions"/>
+                                        <field name="avg_session_duration"/>
+                                        <field name="favorite_game"/>
+                                        <field name="bet_frequency"/>
+                                        <field name="days_since_last_bet"/>
+                                    </group>
+                                </group>
+                            </page>
+                            
+                            <page string="KYC &amp; Compliance" name="kyc">
+                                <group>
+                                    <group string="KYC Status">
+                                        <field name="kyc_status"/>
+                                        <field name="kyc_verified_date" readonly="1"/>
+                                        <field name="kyc_verified_by_id" readonly="1"/>
+                                        <field name="kyc_document_ids" widget="many2many_tags"/>
+                                    </group>
+                                    <group string="KYC Notes">
+                                        <field name="kyc_notes" nolabel="1"/>
+                                    </group>
+                                </group>
+                            </page>
+                            
+                            <page string="Responsible Gaming" name="rg">
+                                <group>
+                                    <group string="Deposit Limits">
+                                        <field name="deposit_limit_daily" widget="monetary"/>
+                                        <field name="deposit_limit_weekly" widget="monetary"/>
+                                        <field name="deposit_limit_monthly" widget="monetary"/>
+                                    </group>
+                                    <group string="Loss Limits">
+                                        <field name="loss_limit_daily" widget="monetary"/>
+                                        <field name="loss_limit_weekly" widget="monetary"/>
+                                    </group>
+                                </group>
+                                <group>
+                                    <group string="Session Controls">
+                                        <field name="session_time_limit"/>
+                                        <field name="reality_check_interval"/>
+                                        <field name="self_exclusion_until"/>
+                                    </group>
+                                </group>
+                            </page>
+                            
+                            <page string="Timeline" name="timeline">
+                                <field name="message_ids" widget="mail_thread"/>
+                            </page>
+                            
+                            <page string="Documents" name="documents">
+                                <field name="kyc_document_ids" nolabel="1">
+                                    <list>
+                                        <field name="name"/>
+                                        <field name="type"/>
+                                        <field name="create_date"/>
+                                    </list>
+                                </field>
+                            </page>
+                            
+                            <page string="Internal Notes" name="notes">
+                                <field name="comment" placeholder="Internal notes..."/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <!-- Player Tree View -->
+        <record id="view_hexapay_player_tree" model="ir.ui.view">
+            <field name="name">hexapay.player.tree</field>
+            <field name="model">res.partner</field>
+            <field name="arch" type="xml">
+                <list string="Players" decoration-danger="player_status=='suspended'" 
+                      decoration-warning="days_since_last_bet&gt;30"
+                      decoration-success="vip_level_id!=False">
+                    <field name="name"/>
+                    <field name="username"/>
+                    <field name="email"/>
+                    <field name="player_status"/>
+                    <field name="vip_level_name"/>
+                    <field name="player_segment"/>
+                    <field name="lead_score" widget="progressbar"/>
+                    <field name="ltv" widget="monetary" sum="Total LTV"/>
+                    <field name="ggr" widget="monetary" sum="Total GGR"/>
+                    <field name="total_deposits" widget="monetary" sum="Total Deposits"/>
+                    <field name="kyc_status"/>
+                    <field name="days_since_last_bet"/>
+                    <field name="assigned_vip_manager_id"/>
+                    <field name="currency_id" invisible="1"/>
+                </list>
+            </field>
+        </record>
+
+        <!-- Player Kanban View -->
+        <record id="view_hexapay_player_kanban" model="ir.ui.view">
+            <field name="name">hexapay.player.kanban</field>
+            <field name="model">res.partner</field>
+            <field name="arch" type="xml">
+                <kanban class="o_kanban_mobile">
+                    <field name="name"/>
+                    <field name="username"/>
+                    <field name="player_status"/>
+                    <field name="vip_level_name"/>
+                    <field name="ltv"/>
+                    <field name="lead_score"/>
+                    <field name="image_128"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div class="oe_kanban_global_click">
+                                <div class="o_kanban_image">
+                                    <img t-att-src="kanban_image('res.partner', 'image_128', record.id.raw_value)" alt="Player"/>
+                                </div>
+                                <div class="oe_kanban_details">
+                                    <strong class="o_kanban_record_title">
+                                        <field name="name"/>
+                                    </strong>
+                                    <div class="o_kanban_tags_section">
+                                        <field name="vip_level_name" widget="badge"/>
+                                        <field name="player_status" widget="badge"/>
+                                    </div>
+                                    <ul>
+                                        <li>Username: <field name="username"/></li>
+                                        <li>LTV: <field name="ltv" widget="monetary"/></li>
+                                        <li>Score: <field name="lead_score"/>/100</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+        <!-- Player Search View -->
+        <record id="view_hexapay_player_search" model="ir.ui.view">
+            <field name="name">hexapay.player.search</field>
+            <field name="model">res.partner</field>
+            <field name="arch" type="xml">
+                <search string="Search Players">
+                    <field name="name" filter_domain="['|', ('name', 'ilike', self), ('username', 'ilike', self)]"/>
+                    <field name="email"/>
+                    <field name="player_id"/>
+                    <field name="vip_level_id"/>
+                    <field name="assigned_vip_manager_id"/>
+                    
+                    <filter string="Active" name="active" domain="[('player_status', '=', 'active')]"/>
+                    <filter string="VIP" name="vip" domain="[('vip_level_id', '!=', False)]"/>
+                    <filter string="High Value" name="high_value" domain="[('ltv', '&gt;', 10000)]"/>
+                    <filter string="At Risk" name="at_risk" domain="[('days_since_last_bet', '&gt;', 30)]"/>
+                    <filter string="Needs KYC" name="needs_kyc" domain="[('kyc_status', 'in', ['not_started', 'pending'])]"/>
+                    <filter string="Suspended" name="suspended" domain="[('player_status', '=', 'suspended')]"/>
+                    <filter string="Has Alerts" name="has_alerts" domain="[('alert_count', '&gt;', 0)]"/>
+<filter string="My Players" name="my_players" domain="[('assigned_vip_manager_id', '=', uid)]"/>
+                    
+                    <group expand="0" string="Group By">
+                        <filter string="Status" name="group_status" domain="[]" context="{'group_by': 'player_status'}"/>
+                        <filter string="VIP Level" name="group_vip" domain="[]" context="{'group_by': 'vip_level_id'}"/>
+                        <filter string="Segment" name="group_segment" domain="[]" context="{'group_by': 'player_segment'}"/>
+                        <filter string="VIP Manager" name="group_manager" domain="[]" context="{'group_by': 'assigned_vip_manager_id'}"/>
+                        <filter string="KYC Status" name="group_kyc" domain="[]" context="{'group_by': 'kyc_status'}"/>
+                        <filter string="Registration Date" name="group_reg_date" domain="[]" context="{'group_by': 'registration_date:month'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <!-- Player Action -->
+        <record id="action_hexapay_player" model="ir.actions.act_window">
+            <field name="name">Players</field>
+            <field name="res_model">res.partner</field>
+            <field name="view_mode">kanban,tree,form</field>
+            <field name="domain">[('is_player', '=', True)]</field>
+            <field name="context">{'default_is_player': True}</field>
+            <field name="search_view_id" ref="view_hexapay_player_search"/>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Create your first player
+                </p>
+                <p>
+                    Players are your gaming customers. Track their activity, manage VIP levels, and provide personalized service.
+                </p>
+            </field>
+        </record>
+
+    </data>
+</odoo>
+

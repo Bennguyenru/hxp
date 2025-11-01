@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- Security Groups -->
+        <record id="group_hexapay_referral_user" model="res.groups">
+            <field name="name">HexaPay Referral Program User</field>
+            
+        </record>
+        
+        <record id="group_hexapay_referral_manager" model="res.groups">
+            <field name="name">HexaPay Referral Program Manager</field>
+            
+            <field name="implied_ids" eval="[(4, ref('group_hexapay_referral_user'))]"/>
+        </record>
+    </data>
+</odoo>
+

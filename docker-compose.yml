@@ -1,0 +1,57 @@
+services:
+  db:
+    image: postgres:15
+    container_name: hexapay_postgres
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=odoo
+      - POSTGRES_PASSWORD=odoo
+      - PGDATA=/var/lib/postgresql/data/pgdata
+    volumes:
+      - hexapay-db-data:/var/lib/postgresql/data/pgdata
+    ports:
+      - "5432:5432"
+    networks:
+      - hexapay-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U odoo"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  odoo:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: hexapay_odoo19
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "8069:8069"
+    volumes:
+      - hexapay-web-data:/odoo/.local/share/Odoo
+      - hexapay-logs:/var/log/odoo
+      - ./hexapay_modules:/odoo/custom-addons:ro
+    networks:
+      - hexapay-network
+    environment:
+      - HOST=db
+      - USER=odoo
+      - PASSWORD=odoo
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8069"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+
+volumes:
+  hexapay-web-data:
+  hexapay-db-data:
+  hexapay-logs:
+
+networks:
+  hexapay-network:
+    driver: bridge

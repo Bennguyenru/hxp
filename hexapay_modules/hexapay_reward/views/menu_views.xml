@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Root Menu -->
+    <menuitem id="menu_hexapay_reward_root"
+              name="HexaPay Reward System"
+              sequence="10"/>
+    
+    <!-- Sub Menus will be added here -->
+</odoo>

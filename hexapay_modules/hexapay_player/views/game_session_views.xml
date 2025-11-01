@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_game_session_tree" model="ir.ui.view">
+        <field name="name">hexapay.game.session.tree</field>
+        <field name="model">hexapay.game.session</field>
+        <field name="arch" type="xml">
+            <list string="Game Sessions">
+                <field name="start_time"/>
+                <field name="player_id"/>
+                <field name="game_name"/>
+                <field name="duration_minutes"/>
+                <field name="total_bets" widget="monetary"/>
+                <field name="total_wins" widget="monetary"/>
+                <field name="session_ggr" widget="monetary"/>
+                <field name="session_status"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="action_game_session" model="ir.actions.act_window">
+        <field name="name">Game Sessions</field>
+        <field name="res_model">hexapay.game.session</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>
+
+

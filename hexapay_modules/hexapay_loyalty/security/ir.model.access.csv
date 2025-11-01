@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_hexapay_loyalty_user,access.hexapay.loyalty.user,model_hexapay_loyalty,base.group_user,1,0,0,0
+access_hexapay_loyalty_manager,access.hexapay.loyalty.manager,model_hexapay_loyalty,hexapay_core.group_hexapay_core_manager,1,1,1,1

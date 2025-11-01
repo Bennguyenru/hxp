@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- Security Groups -->
+        <record id="group_hexapay_pep_user" model="res.groups">
+            <field name="name">HexaPay PEP Screening User</field>
+            
+        </record>
+        
+        <record id="group_hexapay_pep_manager" model="res.groups">
+            <field name="name">HexaPay PEP Screening Manager</field>
+            
+            <field name="implied_ids" eval="[(4, ref('group_hexapay_pep_user'))]"/>
+        </record>
+    </data>
+</odoo>
+

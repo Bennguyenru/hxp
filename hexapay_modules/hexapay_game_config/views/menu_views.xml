@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Root Menu -->
+    <menuitem id="menu_hexapay_game_config_root"
+              name="HexaPay Game Configuration"
+              sequence="10"/>
+    
+    <!-- Sub Menus will be added here -->
+</odoo>

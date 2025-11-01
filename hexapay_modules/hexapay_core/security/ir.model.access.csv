@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_hexapay_config_user,access.hexapay.config.user,model_hexapay_config,base.group_user,1,0,0,0
+access_hexapay_config_manager,access.hexapay.config.manager,model_hexapay_config,group_hexapay_core_manager,1,1,1,0
+access_hexapay_category_user,access.hexapay.category.user,model_hexapay_category,base.group_user,1,0,0,0
+access_hexapay_category_manager,access.hexapay.category.manager,model_hexapay_category,group_hexapay_core_manager,1,1,1,1
+access_hexapay_tag_user,access.hexapay.tag.user,model_hexapay_tag,base.group_user,1,0,0,0
+access_hexapay_tag_manager,access.hexapay.tag.manager,model_hexapay_tag,group_hexapay_core_manager,1,1,1,1

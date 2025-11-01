@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- Security Groups -->
+        <record id="group_hexapay_self_exclusion_user" model="res.groups">
+            <field name="name">HexaPay Self-Exclusion User</field>
+            
+        </record>
+        
+        <record id="group_hexapay_self_exclusion_manager" model="res.groups">
+            <field name="name">HexaPay Self-Exclusion Manager</field>
+            
+            <field name="implied_ids" eval="[(4, ref('group_hexapay_self_exclusion_user'))]"/>
+        </record>
+    </data>
+</odoo>
+

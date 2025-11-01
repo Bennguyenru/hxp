@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_transaction_form" model="ir.ui.view">
+        <field name="name">hexapay.transaction.form</field>
+        <field name="model">hexapay.transaction</field>
+        <field name="arch" type="xml">
+            <form string="Transaction">
+                <header>
+                    <button name="action_approve" string="Approve" type="object" class="oe_highlight" 
+                            attrs="{'invisible': [('status', '!=', 'pending')]}"/>
+                    <button name="action_reject" string="Reject" type="object" 
+                            attrs="{'invisible': [('status', '!=', 'pending')]}"/>
+                    <button name="action_reverse" string="Reverse" type="object" 
+                            attrs="{'invisible': [('status', '!=', 'completed')]}"/>
+                    <field name="status" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1><field name="transaction_id"/></h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="player_id"/>
+                            <field name="type"/>
+                            <field name="transaction_date"/>
+                            <field name="amount" widget="monetary"/>
+                            <field name="currency_id" invisible="1"/>
+                        </group>
+                        <group>
+                            <field name="payment_method" attrs="{'invisible': [('type', 'not in', ['deposit', 'withdrawal'])]}"/>
+                            <field name="payment_provider" attrs="{'invisible': [('type', 'not in', ['deposit', 'withdrawal'])]}"/>
+                            <field name="game_name" attrs="{'invisible': [('type', 'not in', ['bet', 'win'])]}"/>
+                            <field name="risk_score" widget="progressbar"/>
+                            <field name="flagged_for_review"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_transaction_tree" model="ir.ui.view">
+        <field name="name">hexapay.transaction.tree</field>
+        <field name="model">hexapay.transaction</field>
+        <field name="arch" type="xml">
+            <list string="Transactions" decoration-danger="flagged_for_review==True">
+                <field name="transaction_date"/>
+                <field name="transaction_id"/>
+                <field name="player_id"/>
+                <field name="type"/>
+                <field name="amount" widget="monetary" sum="Total"/>
+                <field name="status"/>
+                <field name="risk_score" widget="progressbar"/>
+                <field name="flagged_for_review" invisible="1"/>
+                <field name="currency_id" invisible="1"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="action_transaction" model="ir.actions.act_window">
+        <field name="name">Transactions</field>
+        <field name="res_model">hexapay.transaction</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>
+
+

@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- ========================================== -->
+    <!-- HEXAPAY UNIFIED MENU STRUCTURE -->
+    <!-- ========================================== -->
+    
+    <!-- Root Menu -->
+    <menuitem id="menu_hexapay_root"
+              name="HexaPay"
+              sequence="1"
+              web_icon="hexapay_ui_theme,static/description/icon.png"/>
+    
+    <!-- ========================================== -->
+    <!-- DASHBOARD -->
+    <!-- ========================================== -->
+    <menuitem id="menu_hexapay_dashboard"
+              name="Dashboard"
+              parent="menu_hexapay_root"
+              action="action_hexapay_dashboard"
+              sequence="1"/>
+    
+    <!-- ========================================== -->
+    <!-- PLAYERS & CRM -->
+    <!-- ========================================== -->
+    <menuitem id="menu_hexapay_players"
+              name="Players &amp; CRM"
+              parent="menu_hexapay_root"
+              sequence="10"/>
+    
+    <menuitem id="menu_hexapay_players_players"
+              name="Players"
+              parent="menu_hexapay_players"
+              sequence="1"/>
+    
+    <menuitem id="menu_hexapay_players_leads"
+              name="Leads"
+              parent="menu_hexapay_players"
+              sequence="2"/>
+    
+    <menuitem id="menu_hexapay_players_opportunities"
+              name="Opportunities"
+              parent="menu_hexapay_players"
+              sequence="3"/>
+    
+    <menuitem id="menu_hexapay_players_vip"
+              name="VIP Management"
+              parent="menu_hexapay_players"
+              sequence="10"/>
+    
+    <menuitem id="menu_hexapay_players_vip_levels"
+              name="VIP Levels"
+              parent="menu_hexapay_players_vip"
+              sequence="1"/>
+    
+    <menuitem id="menu_hexapay_players_vip_managers"
+              name="VIP Managers"
+              parent="menu_hexapay_players_vip"
+              sequence="2"/>
+    
+    <menuitem id="menu_hexapay_players_segmentation"
+              name="Segmentation"
+              parent="menu_hexapay_players"
+              sequence="20"/>
+    
+    <menuitem id="menu_hexapay_players_retention"
+              name="Retention"
+              parent="menu_hexapay_players"
+              sequence="30"/>
+    
+    <!-- ========================================== -->
+    <!-- TRANSACTIONS & FINANCE -->
+    <!-- ========================================== -->
+    <menuitem id="menu_hexapay_finance"
+              name="Transactions &amp; Finance"
+              parent="menu_hexapay_root"
+              sequence="20"/>
+    
+    <menuitem id="menu_hexapay_finance_transactions"
+              name="Transactions"
+              parent="menu_hexapay_finance"
+              sequence="1"/>
+    
+    <menuitem id="menu_hexapay_finance_deposits"
+              name="Deposits"
+              parent="menu_hexapay_finance"
+              sequence="2"/>
+    
+    <menuitem id="menu_hexapay_finance_withdrawals"
+              name="Withdrawals"
+              parent="menu_hexapay_finance"
+              sequence="3"/>
+    
+    <menuitem id="menu_hexapay_finance_payments"
+              name="Payment Processing"
+              parent="menu_hexapay_finance"
+              sequence="10"/>
+    
+    <menuitem id="menu_hexapay_finance_accounting"
+              name="Accounting"
+              parent="menu_hexapay_finance"
+              sequence="20"/>
+    
+    <menuitem id="menu_hexapay_finance_reconciliation"
+              name="Reconciliation"
+              parent="menu_hexapay_finance"
+              sequence="21"/>
+    
+    <menuitem id="menu_hexapay_finance_reports"
+              name="Financial Reports"
+              parent="menu_hexapay_finance"
+              sequence="30"/>
+    
+    <!-- ========================================== -->
+    <!-- GAMING & OPERATIONS -->
+    <!-- ========================================== -->
+    <menuitem id="menu_hexapay_gaming"
+              name="Gaming &amp; Operations"
+              parent="menu_hexapay_root"
+              sequence="30"/>
+    
+    <menuitem id="menu_hexapay_gaming_games"
+              name="Games"
+              parent="menu_hexapay_gaming"
+              sequence="1"/>
+    
+    <menuitem id="menu_hexapay_gaming_sessions"
+              name="Game Sessions"
+              parent="menu_hexapay_gaming"
+              sequence="2"/>
+    
+    <menuitem id="menu_hexapay_gaming_bets"
+              name="Bets"
+              parent="menu_hexapay_gaming"
+              sequence="3"/>
+    
+    <menuitem id="menu_hexapay_gaming_wins"
+              name="Wins"
+              parent="menu_hexapay_gaming"
+              sequence="4"/>
+    
+    <menuitem id="menu_hexapay_gaming_analytics"
+              name="Analytics"
+              parent="menu_hexapay_gaming"
+              sequence="10"/>
+    
+    <menuitem id="menu_hexapay_gaming_ggr"
+              name="GGR Reports"
+              parent="menu_hexapay_gaming_analytics"
+              sequence="1"/>
+    
+    <menuitem id="menu_hexapay_gaming_rtp"
+              name="RTP Monitoring"
+              parent="menu_hexapay_gaming_analytics"
+              sequence="2"/>
+    
+    <menuitem id="menu_hexapay_gaming_tournaments"
+              name="Tournaments"
+              parent="menu_hexapay_gaming"
+              sequence="20"/>
+    
+    <menuitem id="menu_hexapay_gaming_leaderboards"
+              name="Leaderboards"
+              parent="menu_hexapay_gaming"
+              sequence="21"/>
+    
+    <!-- ========================================== -->
+    <!-- BONUS & PROMOTIONS -->
+    <!-- ========================================== -->
+    <menuitem id="menu_hexapay_bonus"
+              name="Bonus &amp; Promotions"
+              parent="menu_hexapay_root"
+              sequence="40"/>
+    
+    <menuitem id="menu_hexapay_bonus_bonuses"
+              name="Bonuses"
+              parent="menu_hexapay_bonus"
+              sequence="1"/>
+    
+    <menuitem id="menu_hexapay_bonus_campaigns"
+              name="Campaigns"
+              parent="menu_hexapay_bonus"
+              sequence="2"/>
+    
+    <menuitem id="menu_hexapay_bonus_rules"
+              name="Bonus Rules"
+              parent="menu_hexapay_bonus"
+              sequence="3"/>
+    
+    <menuitem id="menu_hexapay_bonus_wagering"
+              name="Wagering"
+              parent="menu_hexapay_bonus"
+              sequence="10"/>
+    
+    <menuitem id="menu_hexapay_bonus_cashback"
+              name="Cashback"
+              parent="menu_hexapay_bonus"
+              sequence="11"/>
+    
+    <menuitem id="menu_hexapay_bonus_free_spins"
+              name="Free Spins"
+              parent="menu_hexapay_bonus"
+              sequence="12"/>
+    
+    <menuitem id="menu_hexapay_bonus_promo_codes"
+              name="Promo Codes"
+              parent="menu_hexapay_bonus"
+              sequence="13"/>
+    
+    <menuitem id="menu_hexapay_bonus_abuse"
+              name="Abuse Detection"
+              parent="menu_hexapay_bonus"
+              sequence="20"/>
+    
+    <!-- ========================================== -->
+    <!-- RISK & COMPLIANCE -->
+    <!-- ========================================== -->
+    <menuitem id="menu_hexapay_compliance"
+              name="Risk &amp; Compliance"
+              parent="menu_hexapay_root"
+              sequence="50"/>
+    
+    <menuitem id="menu_hexapay_compliance_kyc"
+              name="KYC Management"
+              parent="menu_hexapay_compliance"
+              sequence="1"/>
+    
+    <menuitem id="menu_hexapay_compliance_aml"
+              name="AML Monitoring"
+              parent="menu_hexapay_compliance"
+              sequence="2"/>
+    
+    <menuitem id="menu_hexapay_compliance_fraud"
+              name="Fraud Detection"
+              parent="menu_hexapay_compliance"
+              sequence="3"/>
+    
+    <menuitem id="menu_hexapay_compliance_risk"
+              name="Risk Management"
+              parent="menu_hexapay_compliance"
+              sequence="10"/>
+    
+    <menuitem id="menu_hexapay_compliance_risk_alerts"
+              name="Risk Alerts"
+              parent="menu_hexapay_compliance_risk"
+              sequence="1"/>
+    
+    <menuitem id="menu_hexapay_compliance_risk_rules"
+              name="Risk Rules"
+              parent="menu_hexapay_compliance_risk"
+              sequence="2"/>
+    
+    <menuitem id="menu_hexapay_compliance_responsible"
+              name="Responsible Gaming"
+              parent="menu_hexapay_compliance"
+              sequence="20"/>
+    
+    <menuitem id="menu_hexapay_compliance_self_exclusion"
+              name="Self-Exclusion"
+              parent="menu_hexapay_compliance_responsible"
+              sequence="1"/>
+    
+    <menuitem id="menu_hexapay_compliance_limits"
+              name="Limits"
+              parent="menu_hexapay_compliance_responsible"
+              sequence="2"/>
+    
+    <menuitem id="menu_hexapay_compliance_screening"
+              name="Screening"
+              parent="menu_hexapay_compliance"
+              sequence="30"/>
+    
+    <menuitem id="menu_hexapay_compliance_pep"
+              name="PEP Screening"
+              parent="menu_hexapay_compliance_screening"
+              sequence="1"/>
+    
+    <menuitem id="menu_hexapay_compliance_sanction"
+              name="Sanction Lists"
+              parent="menu_hexapay_compliance_screening"
+              sequence="2"/>
+    
+    <menuitem id="menu_hexapay_compliance_reports"
+              name="Compliance Reports"
+              parent="menu_hexapay_compliance"
+              sequence="40"/>
+    
+    <!-- ========================================== -->
+    <!-- REPORTS & ANALYTICS -->
+    <!-- ========================================== -->
+    <menuitem id="menu_hexapay_reports"
+              name="Reports &amp; Analytics"
+              parent="menu_hexapay_root"
+              sequence="60"/>
+    
+    <menuitem id="menu_hexapay_reports_executive"
+              name="Executive Dashboard"
+              parent="menu_hexapay_reports"
+              sequence="1"/>
+    
+    <menuitem id="menu_hexapay_reports_player"
+              name="Player Reports"
+              parent="menu_hexapay_reports"
+              sequence="10"/>
+    
+    <menuitem id="menu_hexapay_reports_financial"
+              name="Financial Reports"
+              parent="menu_hexapay_reports"
+              sequence="20"/>
+    
+    <menuitem id="menu_hexapay_reports_gaming"
+              name="Gaming Reports"
+              parent="menu_hexapay_reports"
+              sequence="30"/>
+    
+    <menuitem id="menu_hexapay_reports_compliance"
+              name="Compliance Reports"
+              parent="menu_hexapay_reports"
+              sequence="40"/>
+    
+    <!-- ========================================== -->
+    <!-- CONFIGURATION -->
+    <!-- ========================================== -->
+    <menuitem id="menu_hexapay_configuration"
+              name="Configuration"
+              parent="menu_hexapay_root"
+              sequence="100"/>
+    
+    <menuitem id="menu_hexapay_config_settings"
+              name="Settings"
+              parent="menu_hexapay_configuration"
+              sequence="1"/>
+    
+    <menuitem id="menu_hexapay_config_users"
+              name="Users &amp; Access"
+              parent="menu_hexapay_configuration"
+              sequence="10"/>
+    
+    <menuitem id="menu_hexapay_config_integrations"
+              name="Integrations"
+              parent="menu_hexapay_configuration"
+              sequence="20"/>
+    
+    <menuitem id="menu_hexapay_config_notifications"
+              name="Notifications"
+              parent="menu_hexapay_configuration"
+              sequence="30"/>
+    
+    <menuitem id="menu_hexapay_config_categories"
+              name="Categories &amp; Tags"
+              parent="menu_hexapay_configuration"
+              sequence="40"/>
+    
+</odoo>

@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- ========================================== -->
+    <!-- HEXAPAY UNIFIED DASHBOARD -->
+    <!-- ========================================== -->
+    
+    <!-- Dashboard Action -->
+    <record id="action_hexapay_dashboard" model="ir.actions.client">
+        <field name="name">HexaPay Dashboard</field>
+        <field name="tag">hexapay_dashboard</field>
+        <field name="target">current</field>
+    </record>
+    
+    <!-- Dashboard Template -->
+    <template id="hexapay_dashboard_template">
+        <t t-name="hexapay_dashboard">
+            <div class="hexapay_dashboard">
+                <!-- Header -->
+                <div class="hexapay_dashboard_header">
+                    <h1>HexaPay Dashboard</h1>
+                    <div class="hexapay_dashboard_filters">
+                        <select class="form-control hexapay_period_filter">
+                            <option value="today">Today</option>
+                            <option value="week">This Week</option>
+                            <option value="month" selected="selected">This Month</option>
+                            <option value="quarter">This Quarter</option>
+                            <option value="year">This Year</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <!-- KPI Cards Row 1 -->
+                <div class="row hexapay_kpi_row">
+                    <div class="col-md-3">
+                        <div class="hexapay_kpi_card hexapay_kpi_primary">
+                            <div class="hexapay_kpi_icon">
+                                <i class="fa fa-users"></i>
+                            </div>
+                            <div class="hexapay_kpi_content">
+                                <div class="hexapay_kpi_label">Active Players</div>
+                                <div class="hexapay_kpi_value" data-metric="active_players">0</div>
+                                <div class="hexapay_kpi_change positive">
+                                    <i class="fa fa-arrow-up"></i> 12.5%
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-3">
+                        <div class="hexapay_kpi_card hexapay_kpi_success">
+                            <div class="hexapay_kpi_icon">
+                                <i class="fa fa-money"></i>
+                            </div>
+                            <div class="hexapay_kpi_content">
+                                <div class="hexapay_kpi_label">Total Deposits</div>
+                                <div class="hexapay_kpi_value" data-metric="total_deposits">$0</div>
+                                <div class="hexapay_kpi_change positive">
+                                    <i class="fa fa-arrow-up"></i> 8.3%
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-3">
+                        <div class="hexapay_kpi_card hexapay_kpi_warning">
+                            <div class="hexapay_kpi_icon">
+                                <i class="fa fa-credit-card"></i>
+                            </div>
+                            <div class="hexapay_kpi_content">
+                                <div class="hexapay_kpi_label">Total Withdrawals</div>
+                                <div class="hexapay_kpi_value" data-metric="total_withdrawals">$0</div>
+                                <div class="hexapay_kpi_change negative">
+                                    <i class="fa fa-arrow-down"></i> 3.2%
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-3">
+                        <div class="hexapay_kpi_card hexapay_kpi_info">
+                            <div class="hexapay_kpi_icon">
+                                <i class="fa fa-line-chart"></i>
+                            </div>
+                            <div class="hexapay_kpi_content">
+                                <div class="hexapay_kpi_label">GGR</div>
+                                <div class="hexapay_kpi_value" data-metric="ggr">$0</div>
+                                <div class="hexapay_kpi_change positive">
+                                    <i class="fa fa-arrow-up"></i> 15.7%
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- KPI Cards Row 2 -->
+                <div class="row hexapay_kpi_row">
+                    <div class="col-md-3">
+                        <div class="hexapay_kpi_card">
+                            <div class="hexapay_kpi_content">
+                                <div class="hexapay_kpi_label">New Registrations</div>
+                                <div class="hexapay_kpi_value" data-metric="new_registrations">0</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-3">
+                        <div class="hexapay_kpi_card">
+                            <div class="hexapay_kpi_content">
+                                <div class="hexapay_kpi_label">Active Bonuses</div>
+                                <div class="hexapay_kpi_value" data-metric="active_bonuses">0</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-3">
+                        <div class="hexapay_kpi_card">
+                            <div class="hexapay_kpi_content">
+                                <div class="hexapay_kpi_label">Pending KYC</div>
+                                <div class="hexapay_kpi_value" data-metric="pending_kyc">0</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-3">
+                        <div class="hexapay_kpi_card">
+                            <div class="hexapay_kpi_content">
+                                <div class="hexapay_kpi_label">Risk Alerts</div>
+                                <div class="hexapay_kpi_value hexapay_alert_value" data-metric="risk_alerts">0</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Charts Row -->
+                <div class="row hexapay_charts_row">
+                    <div class="col-md-8">
+                        <div class="hexapay_chart_card">
+                            <div class="hexapay_chart_header">
+                                <h3>Revenue Trend</h3>
+                                <div class="hexapay_chart_legend">
+                                    <span class="hexapay_legend_item">
+                                        <span class="hexapay_legend_color hexapay_color_deposits"></span>
+                                        Deposits
+                                    </span>
+                                    <span class="hexapay_legend_item">
+                                        <span class="hexapay_legend_color hexapay_color_withdrawals"></span>
+                                        Withdrawals
+                                    </span>
+                                    <span class="hexapay_legend_item">
+                                        <span class="hexapay_legend_color hexapay_color_ggr"></span>
+                                        GGR
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="hexapay_chart_body">
+                                <canvas id="hexapay_revenue_chart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-4">
+                        <div class="hexapay_chart_card">
+                            <div class="hexapay_chart_header">
+                                <h3>Player Status</h3>
+                            </div>
+                            <div class="hexapay_chart_body">
+                                <canvas id="hexapay_player_status_chart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Tables Row -->
+                <div class="row hexapay_tables_row">
+                    <div class="col-md-6">
+                        <div class="hexapay_table_card">
+                            <div class="hexapay_table_header">
+                                <h3>Top Players by GGR</h3>
+                                <a href="#" class="hexapay_view_all">View All</a>
+                            </div>
+                            <div class="hexapay_table_body">
+                                <table class="table table-hover hexapay_data_table">
+                                    <thead>
+                                        <tr>
+                                            <th>Player</th>
+                                            <th>VIP Level</th>
+                                            <th>GGR</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="hexapay_top_players">
+                                        <tr>
+                                            <td colspan="4" class="text-center">Loading...</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <div class="hexapay_table_card">
+                            <div class="hexapay_table_header">
+                                <h3>Recent Transactions</h3>
+                                <a href="#" class="hexapay_view_all">View All</a>
+                            </div>
+                            <div class="hexapay_table_body">
+                                <table class="table table-hover hexapay_data_table">
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Player</th>
+                                            <th>Type</th>
+                                            <th>Amount</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="hexapay_recent_transactions">
+                                        <tr>
+                                            <td colspan="5" class="text-center">Loading...</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Alerts Row -->
+                <div class="row hexapay_alerts_row">
+                    <div class="col-md-12">
+                        <div class="hexapay_alerts_card">
+                            <div class="hexapay_alerts_header">
+                                <h3>System Alerts</h3>
+                            </div>
+                            <div class="hexapay_alerts_body" id="hexapay_system_alerts">
+                                <!-- Alerts will be loaded dynamically -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+    
+</odoo>

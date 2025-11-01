@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_hexapay_reward_user,access.hexapay.reward.user,model_hexapay_reward,base.group_user,1,0,0,0
+access_hexapay_reward_manager,access.hexapay.reward.manager,model_hexapay_reward,hexapay_core.group_hexapay_core_manager,1,1,1,1

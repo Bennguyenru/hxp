@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="hexapay_webclient_bootstrap" name="HexaPay WebClient Bootstrap" inherit_id="web.webclient_bootstrap">
+        <xpath expr="//head" position="inside">
+            <link rel="stylesheet" href="/hexapay_ui_theme/static/src/css/hexapay_theme.css"/>
+            <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+        </xpath>
+    </template>
+</odoo>

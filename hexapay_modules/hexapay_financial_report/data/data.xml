@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- Sequence -->
+        <record id="seq_hexapay_financial_report" model="ir.sequence">
+            <field name="name">Hexapay Financial Report Sequence</field>
+            <field name="code">hexapay_financial_report</field>
+            <field name="prefix">HEX</field>
+            <field name="padding">5</field>
+            <field name="company_id" eval="False"/>
+        </record>
+    </data>
+</odoo>

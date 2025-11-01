@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_hexapay_limit_user,access.hexapay.limit.user,model_hexapay_limit,base.group_user,1,0,0,0
+access_hexapay_limit_manager,access.hexapay.limit.manager,model_hexapay_limit,hexapay_core.group_hexapay_core_manager,1,1,1,1

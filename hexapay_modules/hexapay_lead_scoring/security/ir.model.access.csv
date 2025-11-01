@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_hexapay_lead_scoring_user,access.hexapay.lead.scoring.user,model_hexapay_lead_scoring,base.group_user,1,0,0,0
+access_hexapay_lead_scoring_manager,access.hexapay.lead.scoring.manager,model_hexapay_lead_scoring,hexapay_core.group_hexapay_core_manager,1,1,1,1

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Root Menu -->
+    <menuitem id="menu_hexapay_security_root"
+              name="HexaPay Security"
+              sequence="10"/>
+    
+    <!-- Sub Menus will be added here -->
+</odoo>

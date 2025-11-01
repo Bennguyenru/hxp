@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Root Menu -->
+    <menuitem id="menu_hexapay_core_root"
+              name="HexaPay Core"
+              sequence="10"/>
+    
+    <!-- Sub Menus will be added here -->
+</odoo>

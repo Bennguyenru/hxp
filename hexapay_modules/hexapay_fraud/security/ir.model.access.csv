@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_hexapay_fraud_user,access.hexapay.fraud.user,model_hexapay_fraud,base.group_user,1,0,0,0
+access_hexapay_fraud_manager,access.hexapay.fraud.manager,model_hexapay_fraud,hexapay_core.group_hexapay_core_manager,1,1,1,1

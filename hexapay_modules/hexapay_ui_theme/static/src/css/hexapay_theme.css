@@ -1,0 +1,548 @@
+/* ========================================== */
+/* HEXAPAY UNIFIED THEME */
+/* ========================================== */
+
+/* Color Palette */
+:root {
+    --hexapay-primary: #2C3E50;
+    --hexapay-secondary: #3498DB;
+    --hexapay-success: #27AE60;
+    --hexapay-warning: #F39C12;
+    --hexapay-danger: #E74C3C;
+    --hexapay-info: #16A085;
+    --hexapay-light: #ECF0F1;
+    --hexapay-dark: #34495E;
+    
+    --hexapay-gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --hexapay-gradient-success: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+    --hexapay-gradient-warning: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    --hexapay-gradient-info: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    
+    --hexapay-shadow-sm: 0 2px 4px rgba(0,0,0,0.1);
+    --hexapay-shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+    --hexapay-shadow-lg: 0 10px 20px rgba(0,0,0,0.15);
+    
+    --hexapay-border-radius: 8px;
+    --hexapay-transition: all 0.3s ease;
+}
+
+/* ========================================== */
+/* DASHBOARD LAYOUT */
+/* ========================================== */
+
+.hexapay_dashboard {
+    padding: 20px;
+    background-color: #f5f7fa;
+    min-height: 100vh;
+}
+
+.hexapay_dashboard_header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding: 20px;
+    background: white;
+    border-radius: var(--hexapay-border-radius);
+    box-shadow: var(--hexapay-shadow-sm);
+}
+
+.hexapay_dashboard_header h1 {
+    margin: 0;
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--hexapay-primary);
+}
+
+.hexapay_dashboard_filters {
+    display: flex;
+    gap: 10px;
+}
+
+.hexapay_period_filter {
+    min-width: 150px;
+    border-radius: var(--hexapay-border-radius);
+    border: 1px solid #ddd;
+    padding: 8px 15px;
+}
+
+/* ========================================== */
+/* KPI CARDS */
+/* ========================================== */
+
+.hexapay_kpi_row {
+    margin-bottom: 20px;
+}
+
+.hexapay_kpi_card {
+    background: white;
+    border-radius: var(--hexapay-border-radius);
+    padding: 20px;
+    box-shadow: var(--hexapay-shadow-sm);
+    transition: var(--hexapay-transition);
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    height: 120px;
+}
+
+.hexapay_kpi_card:hover {
+    box-shadow: var(--hexapay-shadow-md);
+    transform: translateY(-2px);
+}
+
+.hexapay_kpi_icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    color: white;
+    flex-shrink: 0;
+}
+
+.hexapay_kpi_primary .hexapay_kpi_icon {
+    background: var(--hexapay-gradient-primary);
+}
+
+.hexapay_kpi_success .hexapay_kpi_icon {
+    background: var(--hexapay-gradient-success);
+}
+
+.hexapay_kpi_warning .hexapay_kpi_icon {
+    background: var(--hexapay-gradient-warning);
+}
+
+.hexapay_kpi_info .hexapay_kpi_icon {
+    background: var(--hexapay-gradient-info);
+}
+
+.hexapay_kpi_content {
+    flex: 1;
+}
+
+.hexapay_kpi_label {
+    font-size: 14px;
+    color: #7f8c8d;
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+.hexapay_kpi_value {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--hexapay-primary);
+    margin-bottom: 5px;
+}
+
+.hexapay_kpi_change {
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.hexapay_kpi_change.positive {
+    color: var(--hexapay-success);
+}
+
+.hexapay_kpi_change.negative {
+    color: var(--hexapay-danger);
+}
+
+.hexapay_kpi_change i {
+    margin-right: 3px;
+}
+
+.hexapay_alert_value {
+    color: var(--hexapay-danger);
+}
+
+/* ========================================== */
+/* CHARTS */
+/* ========================================== */
+
+.hexapay_charts_row {
+    margin-bottom: 20px;
+}
+
+.hexapay_chart_card {
+    background: white;
+    border-radius: var(--hexapay-border-radius);
+    box-shadow: var(--hexapay-shadow-sm);
+    padding: 20px;
+    height: 400px;
+}
+
+.hexapay_chart_header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid var(--hexapay-light);
+}
+
+.hexapay_chart_header h3 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--hexapay-primary);
+}
+
+.hexapay_chart_legend {
+    display: flex;
+    gap: 15px;
+}
+
+.hexapay_legend_item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 12px;
+    color: #7f8c8d;
+}
+
+.hexapay_legend_color {
+    width: 12px;
+    height: 12px;
+    border-radius: 2px;
+}
+
+.hexapay_color_deposits {
+    background: var(--hexapay-success);
+}
+
+.hexapay_color_withdrawals {
+    background: var(--hexapay-warning);
+}
+
+.hexapay_color_ggr {
+    background: var(--hexapay-info);
+}
+
+.hexapay_chart_body {
+    height: calc(100% - 60px);
+}
+
+.hexapay_chart_body canvas {
+    max-height: 100%;
+}
+
+/* ========================================== */
+/* TABLES */
+/* ========================================== */
+
+.hexapay_tables_row {
+    margin-bottom: 20px;
+}
+
+.hexapay_table_card {
+    background: white;
+    border-radius: var(--hexapay-border-radius);
+    box-shadow: var(--hexapay-shadow-sm);
+    padding: 20px;
+}
+
+.hexapay_table_header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid var(--hexapay-light);
+}
+
+.hexapay_table_header h3 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--hexapay-primary);
+}
+
+.hexapay_view_all {
+    color: var(--hexapay-secondary);
+    font-size: 14px;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.hexapay_view_all:hover {
+    color: var(--hexapay-primary);
+    text-decoration: underline;
+}
+
+.hexapay_data_table {
+    margin: 0;
+}
+
+.hexapay_data_table thead th {
+    background-color: var(--hexapay-light);
+    color: var(--hexapay-primary);
+    font-weight: 600;
+    font-size: 13px;
+    text-transform: uppercase;
+    padding: 12px;
+    border: none;
+}
+
+.hexapay_data_table tbody tr {
+    transition: var(--hexapay-transition);
+}
+
+.hexapay_data_table tbody tr:hover {
+    background-color: #f8f9fa;
+}
+
+.hexapay_data_table tbody td {
+    padding: 12px;
+    vertical-align: middle;
+    border-top: 1px solid #dee2e6;
+}
+
+/* ========================================== */
+/* ALERTS */
+/* ========================================== */
+
+.hexapay_alerts_row {
+    margin-bottom: 20px;
+}
+
+.hexapay_alerts_card {
+    background: white;
+    border-radius: var(--hexapay-border-radius);
+    box-shadow: var(--hexapay-shadow-sm);
+    padding: 20px;
+}
+
+.hexapay_alerts_header {
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid var(--hexapay-light);
+}
+
+.hexapay_alerts_header h3 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--hexapay-primary);
+}
+
+.hexapay_alert_item {
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: var(--hexapay-border-radius);
+    border-left: 4px solid;
+    background-color: #f8f9fa;
+}
+
+.hexapay_alert_item.alert-danger {
+    border-left-color: var(--hexapay-danger);
+    background-color: #fee;
+}
+
+.hexapay_alert_item.alert-warning {
+    border-left-color: var(--hexapay-warning);
+    background-color: #fff3cd;
+}
+
+.hexapay_alert_item.alert-info {
+    border-left-color: var(--hexapay-info);
+    background-color: #d1ecf1;
+}
+
+/* ========================================== */
+/* STATUS BADGES */
+/* ========================================== */
+
+.hexapay_badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.hexapay_badge_success {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.hexapay_badge_warning {
+    background-color: #fff3cd;
+    color: #856404;
+}
+
+.hexapay_badge_danger {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+.hexapay_badge_info {
+    background-color: #d1ecf1;
+    color: #0c5460;
+}
+
+.hexapay_badge_primary {
+    background-color: #cce5ff;
+    color: #004085;
+}
+
+/* ========================================== */
+/* FORM VIEWS */
+/* ========================================== */
+
+.o_form_view .hexapay_form_header {
+    background: var(--hexapay-gradient-primary);
+    color: white;
+    padding: 20px;
+    border-radius: var(--hexapay-border-radius) var(--hexapay-border-radius) 0 0;
+    margin: -16px -16px 20px -16px;
+}
+
+.o_form_view .hexapay_form_section {
+    background: white;
+    padding: 20px;
+    border-radius: var(--hexapay-border-radius);
+    margin-bottom: 20px;
+    box-shadow: var(--hexapay-shadow-sm);
+}
+
+.o_form_view .hexapay_form_section_title {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--hexapay-primary);
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--hexapay-light);
+}
+
+/* ========================================== */
+/* LIST VIEWS */
+/* ========================================== */
+
+.o_list_view .hexapay_list_header {
+    background: var(--hexapay-gradient-primary);
+    color: white;
+    padding: 15px;
+    border-radius: var(--hexapay-border-radius) var(--hexapay-border-radius) 0 0;
+}
+
+.o_list_view tbody tr.hexapay_row_highlight {
+    background-color: #fff3cd !important;
+}
+
+.o_list_view tbody tr.hexapay_row_success {
+    background-color: #d4edda !important;
+}
+
+.o_list_view tbody tr.hexapay_row_danger {
+    background-color: #f8d7da !important;
+}
+
+/* ========================================== */
+/* BUTTONS */
+/* ========================================== */
+
+.hexapay_btn {
+    border-radius: var(--hexapay-border-radius);
+    padding: 8px 20px;
+    font-weight: 600;
+    transition: var(--hexapay-transition);
+    border: none;
+}
+
+.hexapay_btn_primary {
+    background: var(--hexapay-gradient-primary);
+    color: white;
+}
+
+.hexapay_btn_primary:hover {
+    box-shadow: var(--hexapay-shadow-md);
+    transform: translateY(-2px);
+}
+
+.hexapay_btn_success {
+    background: var(--hexapay-gradient-success);
+    color: white;
+}
+
+.hexapay_btn_success:hover {
+    box-shadow: var(--hexapay-shadow-md);
+    transform: translateY(-2px);
+}
+
+/* ========================================== */
+/* RESPONSIVE */
+/* ========================================== */
+
+@media (max-width: 768px) {
+    .hexapay_dashboard {
+        padding: 10px;
+    }
+    
+    .hexapay_dashboard_header {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .hexapay_kpi_card {
+        margin-bottom: 15px;
+    }
+    
+    .hexapay_chart_card {
+        height: 300px;
+        margin-bottom: 15px;
+    }
+    
+    .hexapay_table_card {
+        margin-bottom: 15px;
+    }
+}
+
+/* ========================================== */
+/* ANIMATIONS */
+/* ========================================== */
+
+@keyframes hexapay_fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hexapay_kpi_card,
+.hexapay_chart_card,
+.hexapay_table_card,
+.hexapay_alerts_card {
+    animation: hexapay_fadeIn 0.5s ease;
+}
+
+/* ========================================== */
+/* CUSTOM SCROLLBAR */
+/* ========================================== */
+
+.hexapay_dashboard ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+.hexapay_dashboard ::-webkit-scrollbar-track {
+    background: var(--hexapay-light);
+    border-radius: 4px;
+}
+
+.hexapay_dashboard ::-webkit-scrollbar-thumb {
+    background: var(--hexapay-secondary);
+    border-radius: 4px;
+}
+
+.hexapay_dashboard ::-webkit-scrollbar-thumb:hover {
+    background: var(--hexapay-primary);
+}

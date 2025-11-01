@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Configuration Form View -->
+    <record id="view_hexapay_config_form" model="ir.ui.view">
+        <field name="name">hexapay.config.form</field>
+        <field name="model">hexapay.config</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="company_id" readonly="1"/>
+                        </h1>
+                    </div>
+                    <notebook>
+                        <page string="API Settings">
+                            <group>
+                                <group>
+                                    <field name="api_enabled"/>
+                                    <field name="api_url"/>
+                                </group>
+                                <group>
+                                    <field name="api_key" password="True"/>
+                                    <field name="api_secret" password="True"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page string="Currency">
+                            <group>
+                                <group>
+                                    <field name="default_currency_id"/>
+                                    <field name="multi_currency_enabled"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page string="Transactions">
+                            <group>
+                                <group string="Deposits">
+                                    <field name="auto_approve_deposits"/>
+                                    <field name="min_deposit_amount"/>
+                                    <field name="max_deposit_amount"/>
+                                </group>
+                                <group string="Withdrawals">
+                                    <field name="auto_approve_withdrawals"/>
+                                    <field name="min_withdrawal_amount"/>
+                                    <field name="max_withdrawal_amount"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page string="Risk &amp; KYC">
+                            <group>
+                                <group string="Risk Settings">
+                                    <field name="risk_scoring_enabled"/>
+                                    <field name="high_risk_threshold"/>
+                                    <field name="auto_flag_high_risk"/>
+                                </group>
+                                <group string="KYC Settings">
+                                    <field name="kyc_required"/>
+                                    <field name="kyc_threshold"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page string="Notifications">
+                            <group>
+                                <field name="email_notifications"/>
+                                <field name="sms_notifications"/>
+                                <field name="push_notifications"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Configuration Action -->
+    <record id="action_hexapay_config" model="ir.actions.act_window">
+        <field name="name">Configuration</field>
+        <field name="res_model">hexapay.config</field>
+        <field name="view_mode">form</field>
+        <field name="target">current</field>
+    </record>
+
+    <!-- Category Tree View -->
+    <record id="view_hexapay_category_tree" model="ir.ui.view">
+        <field name="name">hexapay.category.tree</field>
+        <field name="model">hexapay.category</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="sequence" widget="handle"/>
+                <field name="name"/>
+                <field name="code"/>
+                <field name="type"/>
+                <field name="parent_id"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Category Form View -->
+    <record id="view_hexapay_category_form" model="ir.ui.view">
+        <field name="name">hexapay.category.form</field>
+        <field name="model">hexapay.category</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="code"/>
+                            <field name="type"/>
+                        </group>
+                        <group>
+                            <field name="parent_id"/>
+                            <field name="sequence"/>
+                            <field name="color" widget="color_picker"/>
+                            <field name="active"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="description"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Category Action -->
+    <record id="action_hexapay_category" model="ir.actions.act_window">
+        <field name="name">Categories</field>
+        <field name="res_model">hexapay.category</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <!-- Tag Tree View -->
+    <record id="view_hexapay_tag_tree" model="ir.ui.view">
+        <field name="name">hexapay.tag.tree</field>
+        <field name="model">hexapay.tag</field>
+        <field name="arch" type="xml">
+            <list editable="bottom">
+                <field name="name"/>
+                <field name="color" widget="color_picker"/>
+                <field name="active"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Tag Action -->
+    <record id="action_hexapay_tag" model="ir.actions.act_window">
+        <field name="name">Tags</field>
+        <field name="res_model">hexapay.tag</field>
+        <field name="view_mode">list</field>
+    </record>
+
+    <!-- Update Menu -->
+    <menuitem id="menu_hexapay_core_root"
+              name="HexaPay"
+              sequence="5"/>
+
+    <menuitem id="menu_hexapay_config"
+              name="Configuration"
+              parent="menu_hexapay_core_root"
+              sequence="100"/>
+
+    <menuitem id="menu_hexapay_config_settings"
+              name="Settings"
+              parent="menu_hexapay_config"
+              action="action_hexapay_config"
+              sequence="1"/>
+
+    <menuitem id="menu_hexapay_config_categories"
+              name="Categories"
+              parent="menu_hexapay_config"
+              action="action_hexapay_category"
+              sequence="10"/>
+
+    <menuitem id="menu_hexapay_config_tags"
+              name="Tags"
+              parent="menu_hexapay_config"
+              action="action_hexapay_tag"
+              sequence="20"/>
+</odoo>
+
+
